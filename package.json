@@ -1,0 +1,26 @@
+{
+  "name": "range-stream",
+  "version": "0.0.0",
+  "description": "Receive a byte range from a readable stream.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "byte",
+    "stream",
+    "range",
+    "limit"
+  ],
+  "author": {
+    "name": "Stephen Sawchuk",
+    "email": "sawchuk@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.0.1"
+  },
+  "dependencies": {
+    "through2": "^0.6.3"
+  }
+}
