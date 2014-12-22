@@ -1,6 +1,6 @@
 {
   "name": "range-stream",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Receive a byte range from a readable stream.",
   "main": "index.js",
   "scripts": {
