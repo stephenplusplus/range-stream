@@ -1,7 +1,8 @@
 var through = require("through2")
 
 module.exports = function (start, end) {
-  end += 1
+  end = typeof end === 'number' ? end + 1 : Infinity
+
   var bytesReceived = 0
   var lastByteFound = false
 
