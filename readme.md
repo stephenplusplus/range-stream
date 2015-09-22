@@ -25,19 +25,20 @@ range-stream currently only works with Buffer streams. Support for object mode i
 
 ## API
 
-### require("range-stream")(start, end)
+### require("range-stream")(start, [end])
 
 #### start
 
-Type: `Number`
+- Type: `Number`
 
 The byte offset to begin consuming data from the source stream.
 
 #### end
 
-Type: `Number`
+- Optional
+- Type: `Number`
 
-The byte offset that when hit will end the stream.
+The byte offset that when hit will end the stream. If not set, the stream will run until all data is consumed.
 
 
 ## License
