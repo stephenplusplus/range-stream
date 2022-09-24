@@ -16,6 +16,10 @@
     "name": "Stephen Sawchuk",
     "email": "sawchuk@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stephenplusplus/range-stream.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "mocha": "^2.0.1"
