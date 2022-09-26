@@ -7,12 +7,9 @@ var rangeStream = require("../")
 
 // generate an infinite readable stream
 function infiniteStream () {
-  var t = Date.now();
-
   return new Readable({
     async read (/*size*/) {
-      // just keep on generatin' data
-      this.push('here'+Math.random())
+      this.push('here'+Math.random())  // just keep on generatin' data
     }
   })
 }
