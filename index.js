@@ -9,7 +9,17 @@ module.exports = function (start, end) {
 
   return new Transform({
     transform(chunk, enc, next) {
+
+      if (lastByteFound) {
+        // no point in continuing to process the incoming data when we've found
+        // all desired bytes, close the stream gracefully.
+        this.push(null)
+        this.destroy()
+        return
+      }
+
       bytesReceived += chunk.length
+
       if (!lastByteFound && bytesReceived >= start) {
         if (start - (bytesReceived - chunk.length) > 0)
           chunk = chunk.slice(start - (bytesReceived - chunk.length))
@@ -17,8 +27,9 @@ module.exports = function (start, end) {
         if (end <= bytesReceived) {
           this.push(chunk.slice(0, chunk.length - (bytesReceived - end)))
           lastByteFound = true
-        } else
+        } else {
           this.push(chunk)
+        }
       }
       next()
     }

@@ -1,6 +1,22 @@
+var Readable    = require("stream").Readable
+var assert      = require("assert")
+var fs          = require("fs")
+var pipeline    = require("stream").pipeline // as of node v10
 var rangeStream = require("../")
-var assert = require("assert")
-var fs = require("fs")
+
+
+// generate an infinite readable stream
+function infiniteStream () {
+  var t = Date.now();
+
+  return new Readable({
+    async read (/*size*/) {
+      // just keep on generatin' data
+      this.push('here'+Math.random())
+    }
+  })
+}
+
 
 describe("range-stream", function () {
   it("behaves like fs.createReadStream options open/close offsets", function (done) {
@@ -25,6 +41,21 @@ describe("range-stream", function () {
             done()
           })
       })
+  })
+
+  it("closes the range stream after last bytes is read", function (done) {
+    var result = ""
+
+    pipeline(
+      infiniteStream(),
+      rangeStream(5, 4096).on('data', (dat) => {
+        result += dat.toString()
+      }),
+      (err) => {
+        assert.equal(result.length, 4092)
+        done()
+      }
+    )
   })
 
   it("does not require an end", function (done) {
