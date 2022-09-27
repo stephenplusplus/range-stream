@@ -6,6 +6,9 @@
   "scripts": {
     "test": "mocha test"
   },
+  "engines": {
+    "node": ">=10"
+  },
   "keywords": [
     "byte",
     "stream",
@@ -16,11 +19,12 @@
     "name": "Stephen Sawchuk",
     "email": "sawchuk@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stephenplusplus/range-stream.git"
+  },
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^2.0.1"
-  },
-  "dependencies": {
-    "through2": "^0.6.3"
+    "mocha": "^10.0.0"
   }
 }
